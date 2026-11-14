@@ -1,0 +1,14 @@
+# お名前.com（Apache）に置く場合の転送設定
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.onehope\.co\.jp$ [NC]
+RewriteRule ^(.*)$ https://onehope.co.jp/$1 [R=301,L]
+Redirect 301 /about/ /company/
+Redirect 301 /about /company/
+Redirect 301 /recruit/ /company/
+Redirect 301 /privacy-policy/ /privacy/
+Redirect 301 /privacy-policy /privacy/
+RedirectMatch 301 ^/category/news/?.*$ /news/
+RedirectMatch 301 ^/feed/?$ /news/
+ErrorDocument 404 /index.html

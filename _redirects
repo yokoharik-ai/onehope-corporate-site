@@ -1,0 +1,15 @@
+# Netlify / Cloudflare Pages 用：旧WordPressのURLを新ページへ301転送
+/about            /company/   301
+/about/           /company/   301
+/service          /service/   301
+/recruit          /company/   301
+/recruit/         /company/   301
+/faq              /faq/       301
+/contact          /contact/   301
+/privacy-policy   /privacy/   301
+/privacy-policy/  /privacy/   301
+/category/news    /news/      301
+/category/news/   /news/      301
+/category/news/*  /news/      301
+/feed             /news/      301
+/feed/            /news/      301
