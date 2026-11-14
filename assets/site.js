@@ -27,11 +27,10 @@
     els.forEach(function(el){io.observe(el);});
   })();
   var f=document.getElementById('contact-form');
-  if(f){f.addEventListener('submit',function(e){e.preventDefault();
+  if(f){f.addEventListener('submit',function(e){
     var m=document.getElementById('form-msg');
-    if(!f.checkValidity()){m.textContent='必須項目をご確認ください。';f.reportValidity();return;}
-    var d=new FormData(f),body='会社名: '+d.get('company')+'\n担当者名: '+d.get('name')+'\nメール: '+d.get('email')+'\n電話: '+(d.get('tel')||'')+'\n種類: '+d.get('type')+'\n\n'+d.get('body');
-    location.href='mailto:yokohari.k@onehope.co.jp?subject='+encodeURIComponent('【HPお問い合わせ】'+d.get('company'))+'&body='+encodeURIComponent(body);
-    m.textContent='メールソフトが開きます。送信されない場合は '+'yokohari.k@onehope.co.jp'+' 宛に直接お送りください。';
+    if(!f.checkValidity()){e.preventDefault();m.textContent='必須項目をご確認ください。';f.reportValidity();return;}
+    var b=f.querySelector('button[type=submit]');if(b){b.disabled=true;b.textContent='送信しています…';}
+    if(f.hasAttribute('data-preview')){e.preventDefault();location.hash=f.getAttribute('action');setTimeout(function(){if(b){b.disabled=false;b.textContent='送信する';}},500);}
   });}
 })();
